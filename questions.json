@@ -1,0 +1,106 @@
+{
+    "ofc": [
+        {
+            "question": "What is One Football (OFC) primarily focused on?",
+            "options": ["Gaming platform", "Football fan engagement and blockchain", "Social media only", "E-commerce marketplace"],
+            "correct": 1
+        },
+        {
+            "question": "Which blockchain technology does One Football utilize?",
+            "options": ["Bitcoin", "Ethereum", "Polygon", "Solana"],
+            "correct": 2
+        },
+        {
+            "question": "What is the main goal of One Football's tokenization?",
+            "options": ["Trading profits", "Fan engagement and rewards", "Mining operations", "NFT creation only"],
+            "correct": 1
+        },
+        {
+            "question": "One Football aims to connect fans with which aspect?",
+            "options": ["Only professional clubs", "Grassroots and professional football", "Only international teams", "Only youth football"],
+            "correct": 1
+        },
+        {
+            "question": "What type of rewards can OFC token holders expect?",
+            "options": ["Cash only", "Exclusive content and experiences", "Physical merchandise only", "Cryptocurrency mining"],
+            "correct": 1
+        },
+        {
+            "question": "One Football's platform is designed for which audience?",
+            "options": ["Professional players only", "Football fans worldwide", "Coaches only", "Stadium owners"],
+            "correct": 1
+        },
+        {
+            "question": "What makes One Football different from traditional sports platforms?",
+            "options": ["Higher prices", "Blockchain integration and fan ownership", "Limited access", "Professional focus only"],
+            "correct": 1
+        },
+        {
+            "question": "The OFC ecosystem includes which key feature?",
+            "options": ["Centralized control", "Community governance and voting", "Single-user access", "Limited functionality"],
+            "correct": 1
+        },
+        {
+            "question": "One Football's vision includes which aspect?",
+            "options": ["Replacing traditional football", "Democratizing football fan experience", "Eliminating fan clubs", "Reducing fan engagement"],
+            "correct": 1
+        },
+        {
+            "question": "What role do OFC tokens play in the ecosystem?",
+            "options": ["Decoration only", "Utility and governance rights", "Storage medium", "Display purposes"],
+            "correct": 1
+        }
+    ],
+    "football": [
+        {
+            "question": "Which club has won the most UEFA Champions League titles?",
+            "options": ["Barcelona", "Real Madrid", "AC Milan", "Liverpool"],
+            "correct": 1
+        },
+        {
+            "question": "Who scored the 'Hand of God' goal?",
+            "options": ["Pelé", "Diego Maradona", "Lionel Messi", "Ronaldinho"],
+            "correct": 1
+        },
+        {
+            "question": "Which country won the first FIFA World Cup?",
+            "options": ["Brazil", "Argentina", "Uruguay", "Italy"],
+            "correct": 2
+        },
+        {
+            "question": "Who is the all-time top scorer in FIFA World Cup history?",
+            "options": ["Pelé", "Miroslav Klose", "Ronaldo", "Gerd Müller"],
+            "correct": 1
+        },
+        {
+            "question": "Which stadium is known as 'The Theatre of Dreams'?",
+            "options": ["Wembley", "Old Trafford", "Anfield", "Emirates"],
+            "correct": 1
+        },
+        {
+            "question": "In which year did Leicester City win the Premier League?",
+            "options": ["2014", "2015", "2016", "2017"],
+            "correct": 2
+        },
+        {
+            "question": "Who is known as 'The Special One'?",
+            "options": ["Pep Guardiola", "José Mourinho", "Carlo Ancelotti", "Jürgen Klopp"],
+            "correct": 1
+        },
+        {
+            "question": "Which player has won the most Ballon d'Or awards?",
+            "options": ["Cristiano Ronaldo", "Lionel Messi", "Michel Platini", "Johan Cruyff"],
+            "correct": 1
+        },
+        {
+            "question": "What is the maximum number of players on the field for one team?",
+            "options": ["10", "11", "12", "13"],
+            "correct": 1
+        },
+        {
+            "question": "Which club is known as 'The Red Devils'?",
+            "options": ["Liverpool", "Arsenal", "Manchester United", "AC Milan"],
+            "correct": 2
+        }
+    ]
+}

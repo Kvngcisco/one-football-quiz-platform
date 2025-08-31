@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Football (OFC) Quiz Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="intro-animation" class="intro-container">
+        <div class="football-avatar">⚽</div>
+        <h2>Welcome to One Football (OFC)</h2>
+    </div>
+    
+    <div id="main-content" class="main-container hidden">
+        <header>
+            <div class="logo-section">
+                <img src="images/logo.png.png" alt="One Football Logo" class="logo">
+                <h1>One Football (OFC)</h1>
+            </div>
+            <nav>
+                <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="quiz-selection">
+                <button class="quiz-btn" onclick="startQuiz('ofc')">
+                    <h3>One Football Quiz</h3>
+                    <p>Test your knowledge about One Football mission, blockchain, and roadmap</p>
+                </button>
+                
+                <button class="quiz-btn" onclick="startQuiz('football')">
+                    <h3>Football Quiz</h3>
+                    <p>Challenge yourself with clubs, players, and legendary moments</p>
+                </button>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
+

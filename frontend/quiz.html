@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - One Football (OFC)</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <header class="quiz-header">
+            <div class="logo-section">
+                <img src="images/logo.png.png" alt="One Football Logo" class="logo">
+                <h1 id="quiz-title">Quiz</h1>
+            </div>
+            <div class="quiz-progress">
+                <span id="question-counter">1/10</span>
+                <div class="timer">
+                    <span id="timer">15</span>s
+                </div>
+            </div>
+        </header>
+        
+        <main class="quiz-main">
+            <div id="question-container">
+                <h2 id="question-text">Loading question...</h2>
+                <div id="options-container" class="options">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="quiz-complete" class="quiz-complete hidden">
+                <h2>Quiz Complete!</h2>
+                <p>Your Score: <span id="final-score">0</span>/10</p>
+                <div class="username-input">
+                    <label for="twitter-handle">Enter your Twitter handle:</label>
+                    <input type="text" id="twitter-handle" placeholder="@username">
+                    <button onclick="submitScore()">Submit Score</button>
+                </div>
+                <div class="quiz-actions">
+                    <button onclick="retryQuiz()">Retry Quiz</button>
+                    <button onclick="goHome()">Home</button>
+                    <button onclick="viewLeaderboard()">View Leaderboard</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/questions.js"></script>
+    <script src="js/gemini-api.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

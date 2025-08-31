@@ -1,0 +1,19 @@
+{
+  "name": "one-football-quiz-platform",
+  "version": "1.0.0",
+  "description": "One Football (OFC) Quiz Platform with blockchain integration",
+  "main": "frontend/index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build needed'",
+    "start": "echo 'Static site deployed'"
+  },
+  "keywords": ["quiz", "football", "blockchain", "one-football", "ofc"],
+  "author": "One Football Team",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/one-football-quiz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/one-football-quiz.git"
+  }
+}
