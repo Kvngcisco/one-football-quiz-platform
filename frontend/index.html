@@ -2,12 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Football (OFC) Quiz Platform</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #000; color: #fff; min-height: 100vh; }
+        .intro-container { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; }
+        .football-avatar { font-size: 4rem; animation: bounce 1s infinite alternate; margin-bottom: 1rem; }
+        @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+        .hidden { display: none !important; }
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; background: #fff; padding: 1rem 2rem; border-radius: 10px; }
+        .logo-section { display: flex; align-items: center; gap: 1rem; }
+        .logo { height: 50px; width: auto; }
+        header h1 { color: #000; font-size: 2rem; }
+        .nav-link { color: #000; text-decoration: none; padding: 0.5rem 1rem; border: 2px solid #000; border-radius: 5px; }
+        .quiz-selection { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .quiz-btn { background: #fff; border: 3px solid #000; border-radius: 15px; padding: 2rem; cursor: pointer; }
+        .quiz-btn h3 { color: #000; margin-bottom: 1rem; font-size: 1.5rem; }
+        .quiz-btn p { color: #333; line-height: 1.5; }
+        @media (max-width: 768px) {
+            .main-container { padding: 1rem; }
+            header { flex-direction: column; gap: 1rem; text-align: center; }
+            .quiz-selection { grid-template-columns: 1fr; }
+            .logo { height: 35px; }
+            header h1 { font-size: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
     <div id="intro-animation" class="intro-container">
@@ -18,7 +39,6 @@
     <div id="main-content" class="main-container hidden">
         <header>
             <div class="logo-section">
-                <img src="images/logo.png.png" alt="One Football Logo" class="logo">
                 <h1>One Football (OFC)</h1>
             </div>
             <nav>
@@ -41,7 +61,18 @@
         </main>
     </div>
     
-    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.getElementById('intro-animation').classList.add('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+            }, 1500);
+        });
+        
+        function startQuiz(quizType) {
+            localStorage.setItem('currentQuiz', quizType);
+            window.location.href = 'quiz.html';
+        }
+    </script>
 </body>
 </html>
-
