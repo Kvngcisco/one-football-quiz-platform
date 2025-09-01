@@ -12,6 +12,9 @@ body {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 
 .hidden {
@@ -487,6 +490,13 @@ header h1 {
 @media (max-width: 480px) {
     .main-container, .quiz-container, .leaderboard-container {
         padding: 0.5rem;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+    
+    * {
+        box-sizing: border-box;
     }
     
     .football-avatar {
