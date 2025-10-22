@@ -1,26 +1,18 @@
 const API_BASE_URL = 'https://your-api-gateway-url.amazonaws.com/prod';
 
-let currentLeaderboard = 'ofc';
+let currentLeaderboard = 'combined';
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadLeaderboard('ofc');
+    loadLeaderboard('combined');
 });
 
 function showLeaderboard(type) {
-    // Update tab buttons
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    // Show/hide leaderboard sections
-    document.getElementById('ofc-leaderboard').classList.toggle('hidden', type !== 'ofc');
-    document.getElementById('football-leaderboard').classList.toggle('hidden', type !== 'football');
-    
     currentLeaderboard = type;
     loadLeaderboard(type);
 }
 
 async function loadLeaderboard(quizType) {
-    const scoresContainer = document.getElementById(`${quizType}-scores`);
+    const scoresContainer = document.getElementById('combined-scores');
     scoresContainer.innerHTML = '<div class="loading">Loading scores...</div>';
     
     try {
@@ -64,7 +56,7 @@ function displayScores(scores, container) {
             <div class="username">
                 <a href="https://x.com/${scoreData.username}" target="_blank">@${scoreData.username}</a>
             </div>
-            <div class="score">${scoreData.score}/${scoreData.totalQuestions || 10}</div>
+            <div class="score">${scoreData.score}/${scoreData.totalQuestions || 15}</div>
         `;
         
         if (index < 3) {
