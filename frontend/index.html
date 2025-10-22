@@ -67,14 +67,9 @@
         
         <main>
             <div class="quiz-selection">
-                <button class="quiz-btn" onclick="startQuiz('ofc')">
-                    <h3>One Football Quiz</h3>
-                    <p>Test your knowledge about One Football mission, blockchain, and roadmap</p>
-                </button>
-                
-                <button class="quiz-btn" onclick="startQuiz('football')">
-                    <h3>Football Quiz</h3>
-                    <p>Challenge yourself with clubs, players, and legendary moments</p>
+                <button class="quiz-btn" onclick="startQuiz('combined')">
+                    <h3>One Football Ultimate Quiz</h3>
+                    <p>Test your knowledge about One Football (OFC) and football history - 15 challenging questions</p>
                 </button>
             </div>
         </main>
@@ -89,7 +84,7 @@
         });
         
         function startQuiz(quizType) {
-            localStorage.setItem('currentQuiz', quizType);
+            localStorage.setItem('currentQuiz', 'combined');
             window.location.href = 'quiz.html';
         }
     </script>

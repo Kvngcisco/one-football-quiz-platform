@@ -1,11 +1,8 @@
 const API_BASE_URL = 'https://your-api-gateway-url.amazonaws.com/prod';
 
 const quizData = {
-    ofc: {
-        title: 'One Football Quiz'
-    },
-    football: {
-        title: 'Football Quiz'
+    combined: {
+        title: 'One Football Ultimate Quiz'
     }
 };
 
@@ -28,10 +25,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Generate fresh questions with Gemini AI
     try {
         const freshQuestions = await generateFreshQuestions(quizType);
-        if (freshQuestions && freshQuestions.length >= 10) {
+        if (freshQuestions && freshQuestions.length >= 15) {
             currentQuiz = {
                 title: quizData[quizType].title,
-                questions: freshQuestions.slice(0, 10)
+                questions: freshQuestions.slice(0, 15)
             };
         } else {
             throw new Error('Not enough questions generated');
@@ -43,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const shuffled = questions.sort(() => 0.5 - Math.random());
         currentQuiz = {
             title: quizData[quizType].title,
-            questions: shuffled.slice(0, 10)
+            questions: shuffled.slice(0, 15)
         };
     }
     
@@ -56,8 +53,7 @@ async function generateFreshQuestions(quizType) {
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
     
     const prompts = {
-        ofc: `Generate 10 unique multiple-choice questions about One Football (OFC) blockchain project, fan engagement, tokenomics, and roadmap. Each question should have 4 options with one correct answer. Return ONLY a JSON array with format: [{"question": "text", "options": ["A", "B", "C", "D"], "correct": 0}]`,
-        football: `Generate 10 unique multiple-choice questions about football/soccer including clubs, players, World Cup, Champions League, and football history. Each question should have 4 options with one correct answer. Return ONLY a JSON array with format: [{"question": "text", "options": ["A", "B", "C", "D"], "correct": 0}]`
+        combined: `Generate 15 unique multiple-choice questions mixing One Football (OFC) blockchain project topics (7 questions about fan engagement, tokenomics, roadmap) and football/soccer topics (8 questions about clubs, players, World Cup, Champions League, history). Each question should have 4 options with one correct answer. Return ONLY a JSON array with format: [{"question": "text", "options": ["A", "B", "C", "D"], "correct": 0}]`
     };
     
     const response = await fetch(API_URL, {
@@ -83,13 +79,22 @@ async function generateFreshQuestions(quizType) {
 // Static fallback questions
 function getStaticQuestions(quizType) {
     const staticQuestions = {
-        ofc: [
+        combined: [
             { question: "What is One Football (OFC) primarily focused on?", options: ["Gaming", "Football fan engagement", "Social media", "E-commerce"], correct: 1 },
-            { question: "Which blockchain technology does One Football utilize?", options: ["Bitcoin", "Ethereum", "Polygon", "Solana"], correct: 2 }
-        ],
-        football: [
+            { question: "Which blockchain technology does One Football utilize?", options: ["Bitcoin", "Ethereum", "Polygon", "Solana"], correct: 2 },
             { question: "Which club has won the most UEFA Champions League titles?", options: ["Barcelona", "Real Madrid", "AC Milan", "Liverpool"], correct: 1 },
-            { question: "Who scored the 'Hand of God' goal?", options: ["Pelé", "Diego Maradona", "Lionel Messi", "Ronaldinho"], correct: 1 }
+            { question: "Who scored the 'Hand of God' goal?", options: ["Pelé", "Diego Maradona", "Lionel Messi", "Ronaldinho"], correct: 1 },
+            { question: "What year was the first FIFA World Cup held?", options: ["1928", "1930", "1932", "1934"], correct: 1 },
+            { question: "Which country has won the most World Cups?", options: ["Germany", "Argentina", "Brazil", "Italy"], correct: 2 },
+            { question: "What is the maximum number of players on field per team?", options: ["10", "11", "12", "13"], correct: 1 },
+            { question: "Which stadium is known as 'The Theatre of Dreams'?", options: ["Wembley", "Old Trafford", "Anfield", "Emirates"], correct: 1 },
+            { question: "Who is known as 'The Special One'?", options: ["Pep Guardiola", "José Mourinho", "Carlo Ancelotti", "Jürgen Klopp"], correct: 1 },
+            { question: "Which player has won the most Ballon d'Or awards?", options: ["Cristiano Ronaldo", "Lionel Messi", "Michel Platini", "Johan Cruyff"], correct: 1 },
+            { question: "In which year did Leicester City win the Premier League?", options: ["2014", "2015", "2016", "2017"], correct: 2 },
+            { question: "Which club is known as 'The Red Devils'?", options: ["Liverpool", "Arsenal", "Manchester United", "AC Milan"], correct: 2 },
+            { question: "Who is the all-time top scorer in FIFA World Cup history?", options: ["Pelé", "Miroslav Klose", "Ronaldo", "Gerd Müller"], correct: 1 },
+            { question: "What does OFC stand for in One Football?", options: ["Official Football Club", "One Football Coin", "Online Football Community", "Original Fan Club"], correct: 1 },
+            { question: "Which technology enables One Football's fan engagement?", options: ["AI only", "Blockchain", "VR only", "Traditional web"], correct: 1 }
         ]
     };
     return staticQuestions[quizType] || [];
