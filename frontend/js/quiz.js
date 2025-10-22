@@ -22,13 +22,24 @@ document.addEventListener('DOMContentLoaded', async function() {
         return;
     }
     
-    // Try to load fresh questions from Gemini API
+    document.getElementById('quiz-title').textContent = quizData[quizType].title;
+    document.getElementById('question-text').textContent = 'Generating fresh questions with AI...';
+    
+    // Generate fresh questions with Gemini AI
     try {
-        currentQuiz = await loadQuizWithFreshQuestions(quizType);
+        const freshQuestions = await generateFreshQuestions(quizType);
+        if (freshQuestions && freshQuestions.length >= 10) {
+            currentQuiz = {
+                title: quizData[quizType].title,
+                questions: freshQuestions.slice(0, 10)
+            };
+        } else {
+            throw new Error('Not enough questions generated');
+        }
     } catch (error) {
-        console.error('Failed to load fresh questions, using static ones:', error);
-        // Fallback to static questions
-        const questions = allQuestions[quizType];
+        console.log('Using fallback questions:', error);
+        // Fallback to static questions from questions.js
+        const questions = allQuestions[quizType] || getStaticQuestions(quizType);
         const shuffled = questions.sort(() => 0.5 - Math.random());
         currentQuiz = {
             title: quizData[quizType].title,
@@ -36,10 +47,53 @@ document.addEventListener('DOMContentLoaded', async function() {
         };
     }
     
-    document.getElementById('quiz-title').textContent = currentQuiz.title;
-    
     showQuestion();
 });
+
+// Generate fresh questions using Gemini AI
+async function generateFreshQuestions(quizType) {
+    const GEMINI_API_KEY = 'AIzaSyDcVqODoJ0XS796I6xLd4TF6ngiXdEUsLE';
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+    
+    const prompts = {
+        ofc: `Generate 10 unique multiple-choice questions about One Football (OFC) blockchain project, fan engagement, tokenomics, and roadmap. Each question should have 4 options with one correct answer. Return ONLY a JSON array with format: [{"question": "text", "options": ["A", "B", "C", "D"], "correct": 0}]`,
+        football: `Generate 10 unique multiple-choice questions about football/soccer including clubs, players, World Cup, Champions League, and football history. Each question should have 4 options with one correct answer. Return ONLY a JSON array with format: [{"question": "text", "options": ["A", "B", "C", "D"], "correct": 0}]`
+    };
+    
+    const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            contents: [{ parts: [{ text: prompts[quizType] }] }]
+        })
+    });
+    
+    const data = await response.json();
+    const text = data.candidates[0].content.parts[0].text;
+    
+    // Extract JSON from response
+    const jsonMatch = text.match(/\[.*\]/s);
+    if (jsonMatch) {
+        return JSON.parse(jsonMatch[0]);
+    }
+    
+    return null;
+}
+
+// Static fallback questions
+function getStaticQuestions(quizType) {
+    const staticQuestions = {
+        ofc: [
+            { question: "What is One Football (OFC) primarily focused on?", options: ["Gaming", "Football fan engagement", "Social media", "E-commerce"], correct: 1 },
+            { question: "Which blockchain technology does One Football utilize?", options: ["Bitcoin", "Ethereum", "Polygon", "Solana"], correct: 2 }
+        ],
+        football: [
+            { question: "Which club has won the most UEFA Champions League titles?", options: ["Barcelona", "Real Madrid", "AC Milan", "Liverpool"], correct: 1 },
+            { question: "Who scored the 'Hand of God' goal?", options: ["Pelé", "Diego Maradona", "Lionel Messi", "Ronaldinho"], correct: 1 }
+        ]
+    };
+    return staticQuestions[quizType] || [];
+}
 
 function showQuestion() {
     if (currentQuestionIndex >= currentQuiz.questions.length) {
