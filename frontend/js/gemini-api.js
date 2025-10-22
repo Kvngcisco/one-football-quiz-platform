@@ -1,4 +1,4 @@
-const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY_HERE'; // Replace with your actual API key
+const GEMINI_API_KEY = 'AIzaSyDcVqODoJ0XS796I6xLd4TF6ngiXdEUsLE'; // Replace with your actual API key
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 
 async function generateFreshQuestions(quizType, count = 10) {
